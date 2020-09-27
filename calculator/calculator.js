@@ -3,10 +3,51 @@ let buffer = "0";
 let previousOperator = null;
 const screen = document.querySelector('.screen');
 
-document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
-    buttonClick(Event.target.innerText);
-    //console.log(Event.target.innerText);
-})
+const buttons = [
+    [
+        { value: 'C', className: 'double' },
+        { value: '⬅' },
+        { value: '➗' },
+    ],
+    [
+        { value: '7' },
+        { value: '8' },
+        { value: '9' },
+        { value: '✖' },
+    ],
+    [
+        { value: '4' },
+        { value: '5' },
+        { value: '6' },
+        { value: '-' },
+    ],
+    [
+        { value: '1' },
+        { value: '2' },
+        { value: '3' },
+        { value: '+' },
+    ],
+    [
+        { value: '0', className: 'triple' },
+        { value: '=' },
+    ],
+]
+
+window.onload = function() {
+    document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
+        buttonClick(Event.target.innerText);
+        //console.log(Event.target.innerText);
+    });
+
+    buttons.forEach((row) => {
+        // TODO: create new row element wth class=calc-row
+        // https://www.w3schools.com/JSREF/met_document_createelement.asp
+        row.forEach((button) => {
+            // TODO: create new button element with class=calc-button;
+        });
+    });
+}
+
 
 function buttonClick(value) {
     if (isNaN(parseInt(value))) {
