@@ -53,6 +53,7 @@ function handleSymbol(value) {
             handleMath(value);
             break;
     }
+    rerender();
 }
 
 function handleMath(value) {
@@ -71,9 +72,15 @@ function flushOperation(intBuffer) {
         runningTotal += intBuffer;
     } else if (previousOperator === "-") {
         runningTotal -= intBuffer;
+    } else if (previousOperator === "✖") {
+        runningTotal *= intBuffer;
+    } else {
+        runningTotal /= intBuffer;
     }
+
 }
 
 function rerender() {
     screen.innerText = buffer;
 }
+//working ...
