@@ -1,6 +1,7 @@
 let runningTotal = 0;
 let buffer = "0";
 let previousOperator = null;
+let nextOperator = null;
 const screen = document.querySelector('.screen');
 
 const buttons = [
@@ -34,18 +35,24 @@ const buttons = [
 ]
 
 window.onload = function() {
-    document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
+    var nextOperator = document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
         buttonClick(Event.target.innerText);
         //console.log(Event.target.innerText);
     });
 
     buttons.forEach((row) => {
+
         // TODO: create new row element wth class=calc-row
+        var row = document.getElementById('calc-row') + document.createElement('row');
+        document.body.appendChild(row);
         // https://www.w3schools.com/JSREF/met_document_createelement.asp
         row.forEach((button) => {
+            var button = document.getElementById('calc-button') + document.createElement('button');
+            document.body.appendChild(button);
             // TODO: create new button element with class=calc-button;
         });
     });
+    alert(buttons.values);
 }
 
 
@@ -80,8 +87,9 @@ function handleSymbol(value) {
             }
             flushOperation(parseInt(buffer));
             previousOperator = null;
-            buffer = " " + runningTotal;
+            buffer = runningTotal;
             runningTotal = 0;
+            render();
             break;
         case "⬅":
             if (buffer.length === 1) {
@@ -124,4 +132,12 @@ function flushOperation(intBuffer) {
 function rerender() {
     screen.innerText = buffer;
 }
+
+function render(nextOperator) {
+    var next = null;
+    if (nextOperator != "+" || "-" || "✖" || "C" || "⬅") {
+        return next = "0";
+    }
+}
+
 //working ...
