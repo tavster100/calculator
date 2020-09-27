@@ -36,25 +36,33 @@ const buttons = [
 
 window.onload = function() {
 
-    //console.log(Event.target.innerText);
-    const containerElement = document.querySelector('.calc-buttons');
-    buttons.forEach((row) => {
-        const rowElement = document.createElement('div');
-        rowElement.className = 'calc-row';
-        containerElement.append(row);
-        // TODO: create new row element wth class=calc-row
-        // https://www.w3schools.com/JSREF/met_document_createelement.asp
-        row.forEach((button) => {
-            const buttonElement = document.createElement('button');
-            buttonElement.className = 'calc-button';
-            rowElement.append(buttonElement);
-            // TODO: create new button element with class=calc-button;
+        //console.log(Event.target.innerText);
+
+        const containerElement = document.querySelector('.calc-buttons');
+        buttons.forEach((row) => {
+            const rowElement = document.createElement('div');
+            rowElement.className = 'calc-row';
+            containerElement.append(row);
+            // TODO: create new row element wth class=calc-row
+            // https://www.w3schools.com/JSREF/met_document_createelement.asp
+            row.forEach((button) => {
+                //buttonElement.innerHTML = button.value;
+                const buttonElement = document.createElement('button');
+                rowElement.append(buttonElement);
+                // buttonElement.className = 'calc-button';
+                //----------------------------------------
+                const classNamesArray = ['calc-button'];
+                if (button.className)
+                    classNamesArray.push(button.className);
+                buttonElement.className = classNamesArray.join(' ');
+                // TODO create new button element with class=calc-button;
+            });
         });
-    });
-    document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
-        buttonClick(Event.target.innerText);
-    });
-}
+        document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
+            buttonClick(Event.target.innerText);
+        });
+    }
+    //merge
 
 function buttonClick(value) {
     if (isNaN(parseInt(value))) {
