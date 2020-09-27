@@ -35,26 +35,26 @@ const buttons = [
 ]
 
 window.onload = function() {
-    var nextOperator = document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
-        buttonClick(Event.target.innerText);
-        //console.log(Event.target.innerText);
-    });
 
+    //console.log(Event.target.innerText);
+    const containerElement = document.querySelector('.calc-buttons');
     buttons.forEach((row) => {
-
+        const rowElement = document.createElement('div');
+        rowElement.className = 'calc-row';
+        containerElement.append(row);
         // TODO: create new row element wth class=calc-row
-        var row = document.getElementById('calc-row') + document.createElement('row');
-        document.body.appendChild(row);
         // https://www.w3schools.com/JSREF/met_document_createelement.asp
         row.forEach((button) => {
-            var button = document.getElementById('calc-button') + document.createElement('button');
-            document.body.appendChild(button);
+            const buttonElement = document.createElement('button');
+            buttonElement.className = 'calc-button';
+            rowElement.append(buttonElement);
             // TODO: create new button element with class=calc-button;
         });
     });
-    alert(buttons.values);
+    document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
+        buttonClick(Event.target.innerText);
+    });
 }
-
 
 function buttonClick(value) {
     if (isNaN(parseInt(value))) {
