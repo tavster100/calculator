@@ -35,29 +35,24 @@ const buttons = [
 ]
 
 window.onload = function() {
-
-        //console.log(Event.target.innerText);
-
         const containerElement = document.querySelector('.calc-buttons');
         buttons.forEach((row) => {
             const rowElement = document.createElement('div');
             rowElement.className = 'calc-row';
-            containerElement.append(row);
-            // TODO: create new row element wth class=calc-row
-            // https://www.w3schools.com/JSREF/met_document_createelement.asp
+            containerElement.append(rowElement);
+
             row.forEach((button) => {
-                //buttonElement.innerHTML = button.value;
                 const buttonElement = document.createElement('button');
                 rowElement.append(buttonElement);
-                // buttonElement.className = 'calc-button';
-                //----------------------------------------
+
                 const classNamesArray = ['calc-button'];
                 if (button.className)
                     classNamesArray.push(button.className);
                 buttonElement.className = classNamesArray.join(' ');
-                // TODO create new button element with class=calc-button;
+                buttonElement.innerText = button.value;
             });
         });
+
         document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
             buttonClick(Event.target.innerText);
         });
@@ -118,7 +113,7 @@ function handleMath(value) {
     if (runningTotal === 0) {
         runningTotal = intBuffer;
     } else {
-        flushOperation(intBuffer); //store the value 
+        flushOperation(intBuffer); //store the value
     }
     previousOperator = value;
     buffer = "0";
