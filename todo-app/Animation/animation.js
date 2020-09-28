@@ -1,4 +1,4 @@
-const popmotion = require('popmotion'); // require- i need that library (popmotion)
+const popmotion = require("popmotion"); // require- i need that library (popmotion)
 const { styler, spring, listen, pointer, value } = window.popmotion; //destruction 
 //const spring = window.popmotion.spring 
 //const styler = window.popmotion.styler 

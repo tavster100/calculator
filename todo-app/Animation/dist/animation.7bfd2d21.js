@@ -4712,7 +4712,7 @@ var svg = function (element, props) {
 
 exports.svg = svg;
 },{"tslib":"node_modules/tslib/tslib.es6.js","@popmotion/popcorn":"node_modules/@popmotion/popcorn/dist/popcorn.es.js","framesync":"node_modules/framesync/dist/framesync.es.js","style-value-types":"node_modules/style-value-types/dist/style-value-types.es.js","@popmotion/easing":"node_modules/@popmotion/easing/dist/easing.es.js","stylefire":"node_modules/stylefire/dist/stylefire.es.js","hey-listen":"node_modules/hey-listen/dist/hey-listen.es.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"animation.js":[function(require,module,exports) {
-var popmotion = require('popmotion'); // require- i need that library (popmotion)
+var popmotion = require("popmotion"); // require- i need that library (popmotion)
 
 
 var _window$popmotion = window.popmotion,
@@ -4779,7 +4779,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55790" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56702" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
