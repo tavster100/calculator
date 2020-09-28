@@ -35,29 +35,32 @@ const buttons = [
 ]
 
 window.onload = function() {
-        const containerElement = document.querySelector('.calc-buttons');
-        buttons.forEach((row) => {
-            const rowElement = document.createElement('div');
-            rowElement.className = 'calc-row';
-            containerElement.append(rowElement);
+    renderButtons();
 
-            row.forEach((button) => {
-                const buttonElement = document.createElement('button');
-                rowElement.append(buttonElement);
+    document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
+        buttonClick(Event.target.innerText);
+    });
+}
 
-                const classNamesArray = ['calc-button'];
-                if (button.className)
-                    classNamesArray.push(button.className);
-                buttonElement.className = classNamesArray.join(' ');
-                buttonElement.innerText = button.value;
-            });
+function renderButtons() {
+    const containerElement = document.querySelector('.calc-buttons');
+    buttons.forEach((row) => {
+        const rowElement = document.createElement('div');
+        rowElement.className = 'calc-row';
+        containerElement.append(rowElement);
+
+        row.forEach((button) => {
+            const buttonElement = document.createElement('button');
+            rowElement.append(buttonElement);
+
+            const classNamesArray = ['calc-button'];
+            if (button.className)
+                classNamesArray.push(button.className);
+            buttonElement.className = classNamesArray.join(' ');
+            buttonElement.innerText = button.value;
         });
-
-        document.querySelector('.calc-buttons').addEventListener('click', function(Event) {
-            buttonClick(Event.target.innerText);
-        });
-    }
-    //merge
+    });
+}
 
 function buttonClick(value) {
     if (isNaN(parseInt(value))) {
@@ -138,7 +141,8 @@ function rerender() {
 
 function render(nextOperator) {
     var next = null;
-    if (nextOperator != "+" || "-" || "✖" || "C" || "⬅") {
+
+    if (["+", "-", "✖", "C", "⬅"].includes(nextOperator)) {
         return next = "0";
     }
 }
