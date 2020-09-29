@@ -4712,19 +4712,12 @@ var svg = function (element, props) {
 
 exports.svg = svg;
 },{"tslib":"node_modules/tslib/tslib.es6.js","@popmotion/popcorn":"node_modules/@popmotion/popcorn/dist/popcorn.es.js","framesync":"node_modules/framesync/dist/framesync.es.js","style-value-types":"node_modules/style-value-types/dist/style-value-types.es.js","@popmotion/easing":"node_modules/@popmotion/easing/dist/easing.es.js","stylefire":"node_modules/stylefire/dist/stylefire.es.js","hey-listen":"node_modules/hey-listen/dist/hey-listen.es.js","process":"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"animation.js":[function(require,module,exports) {
-var popmotion = require("popmotion"); // require- i need that library (popmotion)
-
-
-var _window$popmotion = window.popmotion,
-    styler = _window$popmotion.styler,
-    spring = _window$popmotion.spring,
-    listen = _window$popmotion.listen,
-    pointer = _window$popmotion.pointer,
-    value = _window$popmotion.value; //destruction 
-//const spring = window.popmotion.spring 
-//const styler = window.popmotion.styler 
-//const listen = window.popmotion.listen  
-//const spring = window.popmotion.spring 
+var _require = require('popmotion'),
+    styler = _require.styler,
+    spring = _require.spring,
+    listen = _require.listen,
+    pointer = _require.pointer,
+    value = _require.value;
 
 var ball = document.querySelector('.box');
 var divStyler = styler(ball);
@@ -4732,26 +4725,14 @@ var ballXY = value({
   x: 0,
   y: 0
 }, divStyler.set);
-listen(ball, 'mousedown touchstart').start(function (e)
-/*.start(function(e))*/
-{
+listen(ball, 'mousedown touchstart').start(function (e) {
   e.preventDefault();
   pointer(ballXY.get()).start(ballXY);
 });
 listen(document, 'mouseup touchend').start(function () {
-  spring({
-    from: ballXY.get(),
-    velocity: ballXY.getVelocity(),
-    to: {
-      x: 0,
-      y: 0
-    },
-    stiffness: 200 // mass: 1,
-    // damping: 10
-
-  }).start(ballXY);
+  ballXY.stop();
 });
-},{"popmotion":"node_modules/popmotion/dist/popmotion.es.js"}],"../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"popmotion":"node_modules/popmotion/dist/popmotion.es.js"}],"../../../Users/Dell/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -4779,7 +4760,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56702" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50266" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -4955,5 +4936,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","animation.js"], null)
+},{}]},{},["../../../Users/Dell/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","animation.js"], null)
 //# sourceMappingURL=/animation.7bfd2d21.js.map
