@@ -26,8 +26,10 @@
     },
     "dependencies": {
         "@frontendmasters/pet": "^1.0.3",
+        "@reach/router": "^1.3.4",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
+        "react-router-dom": "^5.2.0",
         "reactdom": "^2.0.0"
     },
     "browserslist": [
