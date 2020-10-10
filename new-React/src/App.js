@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "react-dom"; //IMPORTING reactDOM and react
 import { Link, Router } from "@reach/router";
 import SearchParams from "./SearchParams";
 import Details from "./Details";
-
+import ThemeContext from "./ThemeContext";
 const App = () => {
+  const themeHook = useState("darkblue");
   /* return React.createElement(
         "div", {}, [
             React.createElement("h1", {}, "Adopt Me!"),
@@ -28,18 +29,20 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      <div>
-        <header>
-          <Link to="/">
-            <h1 id="something-important">Adopt Me!</h1>
-          </Link>
-        </header>
+      <ThemeContext.Provider value={themeHook}>
+        <div>
+          <header>
+            <Link to="/">
+              <h1 id="something-important">Adopt Me!</h1>
+            </Link>
+          </header>
 
-        <Router>
-          <SearchParams path="/" />
-          <Details path="/details/:id"></Details>
-        </Router>
-      </div>
+          <Router>
+            <SearchParams path="/" />
+            <Details path="/details/:id"></Details>
+          </Router>
+        </div>
+      </ThemeContext.Provider>
     </React.StrictMode>
   );
 };
