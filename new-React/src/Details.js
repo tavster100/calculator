@@ -1,6 +1,7 @@
 import React from "react";
 import pet from "@frontendmasters/pet";
 import Carousel from "./Carousel";
+import ErrorBoundary from "./ErrorBoundary";
 class Details extends React.Component {
   state = { loading: true };
   componentDidMount() {
@@ -40,4 +41,11 @@ class Details extends React.Component {
 }
 //useState will not work inside of a class component
 
-export default Details;
+export default function DetailsWithErrorBoundary(props) {
+  return (
+    <ErrorBoundary>
+      <Details {...props} />
+    </ErrorBoundary>
+  );
+}
+//spread props accros details
