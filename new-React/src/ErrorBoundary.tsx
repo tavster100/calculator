@@ -4,11 +4,11 @@ import React, { Component, ErrorInfo } from "react";
 import { Link, Redirect } from "@reach/router";
 
 class ErrorBoundary extends Component {
- public state = { hasError: false, redirect: false };
- public static getDerivedStateFromError(){
-   return {hasError:true};
- }
- public componentDidCatch(error:Error, info:ErrorInfo) {
+  public state = { hasError: false, redirect: false };
+  public static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  public componentDidCatch(error: Error, info: ErrorInfo) {
     console.error("ErrorBoundary caught error ", error, info);
   }
   public componentDidUpdate() {

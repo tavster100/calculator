@@ -1,17 +1,15 @@
-import React, { useState, useEffect, useContext , FunctionComponent} from "react";
+import React, { useState, useEffect, useContext, FunctionComponent } from "react";
 import pet, { ANIMALS, Animal } from "@frontendmasters/pet";
 import Results from "./Results";
 import useDropdown from "./useDropdown";
 import ThemeContext from "./ThemeContext";
-import {RouteComponentProps} from '@reach/router';
+import { RouteComponentProps } from '@reach/router';
 
-const SearchParams:FunctionComponent<RouteComponentProps> = () => {
-  const [location, setLocation] = useState("Romania , Ro");
-  /* const [animal, setAnimal] = useState("dog");
-  const [breed, setBreed] = useState(""); */
-  const [breeds, setBreeds] = useState([] as string[]);
+const SearchParams: FunctionComponent<RouteComponentProps> = () => {
+  const [location, updateLocation] = useState("Seattle, WA");
+  const [breeds, updateBreeds] = useState([] as string[]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
-  const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
+  const [breed, BreedDropdown, updateBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([] as Animal[]); // empty array
   const [theme, setTheme] = useContext(ThemeContext);
 
@@ -26,14 +24,14 @@ const SearchParams:FunctionComponent<RouteComponentProps> = () => {
   }
 
   useEffect(() => {
-    setBreeds([]);
-    setBreed("");
+    updateBreeds([]);
+    updateBreed("");
 
     pet.breeds(animal).then(({ breeds }) => {
       const breedStrings = breeds.map(({ name }) => name); // .map((breedObj)=>breedObj.name) | the same thing but its more elegant
-      setBreeds(breedStrings);
+      updateBreeds(breedStrings);
     });
-  }, [animal, setBreed, setBreeds]);
+  }, [animal, updateBreed, updateBreeds]);
 
   return (
     <div className="search-params">
@@ -50,7 +48,7 @@ const SearchParams:FunctionComponent<RouteComponentProps> = () => {
             id="location"
             value={location}
             placeholder="Location"
-            onChange={(e) => setLocation(e.target.value)}
+            onChange={(e) => updateLocation(e.target.value)}
           />
         </label>
         {/* <label htmlFor="animal">
@@ -103,7 +101,7 @@ const SearchParams:FunctionComponent<RouteComponentProps> = () => {
         </label>
         <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
-      <Results pets={pets}/>
+      <Results pets={pets} />
     </div>
   );
 };

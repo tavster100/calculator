@@ -1,12 +1,5 @@
 {
-    "extends": [
-        "tslint:recommended",
-        "tslint-eslint-rules",
-        "tslint-microsoft-contrib",
-        "tslint-consistent-codestyle",
-        "tslint-react",
-        "tslint-config-prettier"
-    ],
+    "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
     "rules": {
         "order-imports": false,
         "object-literal-sort-keys": false,
