@@ -1,11 +1,12 @@
-import React, { FunctionComponent, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-const modalRoot = document.getElementById("modal");
 
-const Modal: FunctionComponent = ({ children }) => {
+
+const Modal: FC = ({ children }) => {
   const elRef = useRef(document.createElement("div"));
 
   useEffect(() => {
+    const modalRoot = document.getElementById("modal");
     if (!modalRoot) {
       return;
     }
