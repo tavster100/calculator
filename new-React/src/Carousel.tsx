@@ -42,7 +42,7 @@ class Carousel extends React.Component<IProps, IState> {
             <img
               key={photo}
               onClick={this.handleIndexClick}
-              // data-index={index}
+              data-index={index}
               src={photo}
               className={index === active ? "active" : " "}
               alt="animal thumbnail"
